@@ -1,0 +1,11 @@
+{
+   "watch": [
+      "backend"
+   ],
+   "ignore": [
+      "node_modules",
+      "dist"
+   ],
+   "ext": ".ts .js .json",
+   "exec": "ts-node ./backend/index.server.ts"
+}
