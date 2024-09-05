@@ -1,9 +1,6 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
+import { ConversationModel } from "../utils/interfaces.util";
 
-interface ConversationModel extends Document {
-   participants: Types.ObjectId[]
-   message: Types.ObjectId[],
-}
 
 const conversationSchema: Schema = new Schema({
    participants: [

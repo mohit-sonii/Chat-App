@@ -1,11 +1,6 @@
-import mongoose, { Schema, Document, Types } from 'mongoose'
+import mongoose, { Schema, Types } from 'mongoose'
+import { MessageModel } from '../utils/interfaces.util'
 
-
-interface MessageModel extends Document {
-   senderId: Types.ObjectId,
-   receiverId: Types.ObjectId,
-   message: string
-}
 
 const MessageSchema: Schema = new Schema({
    senderId: {

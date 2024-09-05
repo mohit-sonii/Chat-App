@@ -1,18 +1,6 @@
-import mongoose, { Schema, Document } from 'mongoose'
-
-enum Gender {
-   male = 'male',
-   female = 'female',
-   others = 'others'
-}
-
-interface UserModel extends Document {
-   username: string,
-   fullname: string,
-   password: string,
-   profilePic: string,
-   gender: Gender
-}
+import mongoose, { Schema } from 'mongoose'
+import { UserModel } from '../utils/interfaces.util'
+import { Gender } from '../utils/interfaces.util'
 
 const UserSchema: Schema = new mongoose.Schema({
    fullname: {
@@ -22,7 +10,8 @@ const UserSchema: Schema = new mongoose.Schema({
    username: {
       required: true,
       unique: true,
-      type: String
+      type: String,
+   
    },
    profilePic: {
       type: String,
