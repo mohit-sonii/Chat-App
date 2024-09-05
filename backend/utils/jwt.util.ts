@@ -15,6 +15,5 @@ export const tokenGeneration = (userId: string, res: Response) => {
       sameSite: "strict",
       maxAge: 29 * 24 * 60 * 60 * 1000
    }
-   console.log(token)
    return res.cookie('token', token, options)
 }
