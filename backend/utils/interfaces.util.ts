@@ -10,12 +10,14 @@ export interface cookieOptions {
 
 
 export interface ConversationModel extends Document {
+   _id: Types.ObjectId
    participants: Types.ObjectId[]
-   message: Types.ObjectId[],
+   messages: Types.ObjectId[],
 }
 
 
 export interface MessageModel extends Document {
+   _id: Types.ObjectId
    senderId: Types.ObjectId,
    receiverId: Types.ObjectId,
    message: string
@@ -28,7 +30,8 @@ export enum Gender {
 }
 
 export interface UserModel extends Document {
-   _id: Types.ObjectId
+   _id: Types.ObjectId,
+   conversation_id?: Types.ObjectId ,
    username: string,
    fullname: string,
    password: string,

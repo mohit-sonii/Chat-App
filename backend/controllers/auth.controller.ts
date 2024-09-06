@@ -9,30 +9,30 @@ import { z } from 'zod'
 
 export const register = async (req: Request, res: Response) => {
    try {
-      const form = RegisterValidation.parse(req.body);
+      const { username, password, fullname, gender } = RegisterValidation.parse(req.body);
       const { confirmPassword } = req.body
 
       const alreadyUser = await User.findOne({
-         username: form.username
+         username
       })
       if (alreadyUser) return ApiResponse(res, 400, false, 'Username already exists')
 
-      if (form.password !== confirmPassword) return ApiResponse(res, 400, false, 'Password do not match')
-      const hashPassword = await bcrypt.hash(form.password, 10)
+      if (password !== confirmPassword) return ApiResponse(res, 400, false, 'Password do not match')
+      const hashPassword = await bcrypt.hash(password, 10)
 
-      let avatar = `https://avatar.iran.liara.run/username?username=${form.username}&length=1`
+      let avatar = `https://avatar.iran.liara.run/username?username=${username}&length=1`
 
-      if (form.gender === 'male')
-         avatar = `https://avatar.iran.liara.run/public/boy?username=${form.username}`
+      if (gender === 'male')
+         avatar = `https://avatar.iran.liara.run/public/boy?username=${username}`
       else
-         avatar = `https://avatar.iran.liara.run/public/girl?username=${form.username}`
+         avatar = `https://avatar.iran.liara.run/public/girl?username=${username}`
 
       const newUser = new User({
-         fullname: form.fullname,
-         username: form.username,
+         fullname,
+         username,
          profilePic: avatar,
          password: hashPassword,
-         gender: form.gender
+         gender
       })
 
       await newUser.save()
@@ -45,7 +45,7 @@ export const register = async (req: Request, res: Response) => {
          return ApiResponse(res, 400, false, `Validation Error: ${validationErrors}`);
       }
       console.log(error, 'Error while registering a user')
-      return ApiResponse(res, 500, false, error.message || 'Internal Server Error')
+      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error')
    }
 }
 export const login = async (req: Request, res: Response) => {
@@ -63,7 +63,7 @@ export const login = async (req: Request, res: Response) => {
 
    } catch (error: any) {
       console.log(error, 'Error while login a user')
-      return ApiResponse(res, 500, false, error.message || 'Internal Server Error')
+      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error')
    }
 }
 export const logout = async (_: Request, res: Response) => {

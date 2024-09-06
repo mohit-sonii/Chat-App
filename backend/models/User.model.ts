@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Types, Schema } from 'mongoose'
 import { UserModel } from '../utils/interfaces.util'
 import { Gender } from '../utils/interfaces.util'
 
@@ -11,7 +11,7 @@ const UserSchema: Schema = new mongoose.Schema({
       required: true,
       unique: true,
       type: String,
-   
+
    },
    profilePic: {
       type: String,
@@ -24,6 +24,11 @@ const UserSchema: Schema = new mongoose.Schema({
       type: String,
       required: true,
       enum: Object.values(Gender)
+   },
+   conversation_id: {
+      type: Types.ObjectId,
+      ref: 'Conversation',
+      default: null
    }
 })
 

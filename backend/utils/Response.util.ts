@@ -7,13 +7,13 @@ interface response {
    statusCode: number,
    success: boolean,
    message: string,
-   data?: {} | null ,
+   data?: any,
    error?: {} | null
 }
 
 export const ApiResponse = (
    res: Response,
-   statusCode: number, success: boolean, message: string, data?: object, error?: object
+   statusCode: number, success: boolean, message: string, data?: any, error?: object
 ) => {
 
    const extract: response = { statusCode, success, message, data, error }
