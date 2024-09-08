@@ -1,0 +1,1 @@
+export const domain = `https://real-time-chat-app-livid.vercel.app`

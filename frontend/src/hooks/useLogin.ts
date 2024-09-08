@@ -3,6 +3,7 @@ import axios, { AxiosError } from 'axios'
 import { useToast } from "./useToast"
 import { useAuthContext } from "@/context/AuthContext"
 import { useNavigate } from "react-router-dom"
+import {domain} from '@/utils/server'
 
 function useLogin() {
 
@@ -13,7 +14,7 @@ function useLogin() {
    const login = async (data: object) => {
       setLoading(true)
       try {
-         const response = await axios.post('/api/auth/login', data)
+         const response = await axios.post(`${domain}/api/auth/login`, data)
          console.log(response.data)
          if (!response.data) throw new Error('Unknown Error')
          navigate('/')

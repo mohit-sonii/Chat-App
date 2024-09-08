@@ -5,14 +5,6 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
    plugins: [react()],
-   server: {
-      port: 3000,
-      proxy:{
-         '/api':{
-            target:'https://chat-app-five-coral.vercel.app'
-         }
-      }
-   },
    resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),

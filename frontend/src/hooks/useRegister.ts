@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from 'axios'
 import { useToast } from "./useToast"
+import { domain } from "@/utils/server"
 import { useAuthContext } from "@/context/AuthContext"
 import { useNavigate } from "react-router-dom"
 
@@ -9,11 +10,11 @@ export function useRegister() {
    const [loading, setLoading] = useState<boolean>(false)
    const { setAuthUser } = useAuthContext()
    const navigate = useNavigate()
-   const {newToast}= useToast()
+   const { newToast } = useToast()
    const register = async (data: object) => {
       setLoading(true)
       try {
-         const response = await axios.post('/api/auth/register', data)
+         const response = await axios.post(`${domain}/api/auth/register`, data)
          if (!response.data) {
             throw new Error('Error')
          }
