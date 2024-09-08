@@ -5,7 +5,7 @@ import { ShadButton } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { DotLoader } from "@/components/ui/dotLoader";
 import { useToast } from "@/hooks/useToast";
-import { validation, validationForLogin } from "@/utils/validation";
+import { validationForLogin } from "@/utils/validation";
 
 const Login = () => {
    const [inputs, setInputs] = useState({
