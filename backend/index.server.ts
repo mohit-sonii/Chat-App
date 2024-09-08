@@ -19,7 +19,7 @@ app.use('/api/auth', authRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/users', userRoute)
 
-app.listen(process.env.Port || 3000, () => {
+app.listen(process.env.Port || 8000, () => {
    dbConnect()
    console.log('It is listening')
 })
