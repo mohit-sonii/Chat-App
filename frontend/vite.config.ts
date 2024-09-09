@@ -8,7 +8,7 @@ export default defineConfig({
    server: {
       proxy: {
          '/api': {
-            target: 'https://chat-app-puce-seven.vercel.app',
+            target: 'https://chat-app-4-d2tf.onrender.com',
             changeOrigin: true,
          },
       },
