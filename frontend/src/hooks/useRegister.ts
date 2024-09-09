@@ -13,7 +13,7 @@ export function useRegister() {
    const register = async (data: object) => {
       setLoading(true)
       try {
-         const response = await axios.post('/api/auth/register', data)
+         const response = await axios.post('https://chat-app-4-d2tf.onrender.com/api/auth/register', data)
          if (!response.data) {
             throw new Error('Error')
          }
