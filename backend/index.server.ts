@@ -14,14 +14,14 @@ dotenv.config()
 app.use(express.json())
 app.use(cookieParser())
 
-// const corsOptions = {
-//    origin: ['http://localhost:3000', 'https://social-messaging-application.netlify.app'],
-//    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//    allowedHeaders: ['Content-Type'],
-//    credentials: true
-// };
+const corsOptions = {
+   origin: ['http://localhost:3000', 'https://social-messaging-application.netlify.app'],
+   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+   allowedHeaders: ['Content-Type'],
+   credentials: true
+};
 
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 app.use('/api/auth', authRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/users', userRoute)
