@@ -12,7 +12,7 @@ export const tokenGeneration = (userId: string, res: Response) => {
    const options: cookieOptions = {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 29 * 24 * 60 * 60 * 1000
    }
    return res.cookie('token', token, options)
