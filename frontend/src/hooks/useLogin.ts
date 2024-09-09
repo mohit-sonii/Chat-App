@@ -13,7 +13,9 @@ function useLogin() {
    const login = async (data: object) => {
       setLoading(true)
       try {
-         const response = await axios.post('https://chat-app-4-d2tf.onrender.com/api/auth/login', data)
+         const response = await axios.post('https://chat-app-4-d2tf.onrender.com/api/auth/login', data,{
+            withCredentials:true
+         })
          console.log(response.data)
          if (!response.data) throw new Error('Unknown Error')
          navigate('/')
