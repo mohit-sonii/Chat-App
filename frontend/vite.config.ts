@@ -8,7 +8,7 @@ export default defineConfig({
    server: {
       proxy: {
          '/api': {
-            target: 'https://real-time-chat-app-livid.vercel.app/', // Replace with your backend URL
+            target: 'https://chat-app-puce-seven.vercel.app',
             changeOrigin: true,
          },
       },
