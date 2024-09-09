@@ -22,7 +22,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions))
-
 app.use('/api/auth', authRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/users', userRoute)
@@ -33,6 +32,6 @@ app.listen(process.env.PORT || 8000, async() => {
       console.log(`Server is running on port ${process.env.PORT}`);
     } catch (error) {
       console.error('Failed to connect to the database', error);
-      process.exit(1); // Exit the process with failure
+      process.exit(1); 
     }
 })
