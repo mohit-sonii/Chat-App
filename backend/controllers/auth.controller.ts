@@ -68,7 +68,11 @@ export const login = async (req: Request, res: Response) => {
 }
 export const logout = async (_: Request, res: Response) => {
    try {
-      res.cookie('token', "", { maxAge: 0 })
+      res.clearCookie('token', {
+         httpOnly: true,
+         secure: true,
+         sameSite: 'none',
+      })
       return ApiResponse(res, 200, true, 'Logout Successfully')
    } catch (error: any) {
       console.log(error, 'Error while logging out a user')

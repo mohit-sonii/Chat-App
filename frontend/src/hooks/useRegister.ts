@@ -1,26 +1,37 @@
+import { currentUser, login } from "@/redux/reducer"
 import { useState } from "react"
 import axios from 'axios'
 import { useToast } from "./useToast"
-import { useAuthContext } from "@/context/AuthContext"
+import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
+
+interface RegisterType {
+   fullname: string,
+   username: string,
+   password: string,
+   confirmPassword: string,
+   gender: string
+}
 
 export function useRegister() {
 
    const [loading, setLoading] = useState<boolean>(false)
-   const { setAuthUser } = useAuthContext()
    const navigate = useNavigate()
    const { newToast } = useToast()
-   const register = async (data: object) => {
+   const dispatch = useDispatch()
+
+   const register = async (data: RegisterType) => {
       setLoading(true)
       try {
-         const response = await axios.post('https://chat-app-4-d2tf.onrender.com/api/auth/register', data, {
+         const response = await axios.post('/api/auth/register', data, {
             withCredentials: true
          })
          if (!response.data) {
             throw new Error('Error')
          }
-         navigate('/')
-         setAuthUser(response.data.data)
+         dispatch(login(response.data.data))
+         dispatch(currentUser(response.data.data))
+         navigate('/chat')
       } catch (error: any) {
          console.log(error)
          newToast(error.message)

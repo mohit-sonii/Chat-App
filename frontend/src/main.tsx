@@ -1,16 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
+import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext.tsx'
 import './index.css'
+import store from './redux/store.ts'
 
 createRoot(document.getElementById('root')!).render(
    <StrictMode>
-      <BrowserRouter>
-         <AuthProvider>
-            <ToastContainer 
+      <Provider store={store}>
+         <BrowserRouter>
+            <ToastContainer
                position="bottom-right"
                autoClose={3000}
                hideProgressBar={true}
@@ -20,10 +21,10 @@ createRoot(document.getElementById('root')!).render(
                pauseOnFocusLoss
                draggable
                pauseOnHover
-               theme="light"
+               theme="dark"
             />
             <App />
-         </AuthProvider>
-      </BrowserRouter>
+         </BrowserRouter>
+      </Provider>
    </StrictMode>,
 )

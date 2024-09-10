@@ -8,8 +8,8 @@ function Home() {
                <h1 className='text-6xl text-gray-200 font-bold '>Welcome User,</h1>
             </div>
             <div className="flex justify-start  gap-4">
-               <Button innerText='Register' href="/register" />
-               <Button innerText='Login' href="/login" />
+               <Button innerText='Register' href="/auth/register" />
+               <Button innerText='Login' href="/auth/login" />
             </div>
          </div>
 

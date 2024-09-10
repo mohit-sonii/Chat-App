@@ -47,7 +47,7 @@ const Login = () => {
                <ShadButton type="submit">
                   {loading ? <DotLoader></DotLoader> : "Login"}
                </ShadButton>
-               <p>Need an account?  <Link to="/register" className="font-semibold underline hover:text-slate-600 text-slate-950">Register</Link></p>
+               <p>Need an account?  <Link to="/auth/register" className="font-semibold underline hover:text-slate-600 text-slate-950">Register</Link></p>
             </div>
          </form>
       </div>

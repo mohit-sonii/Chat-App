@@ -69,34 +69,9 @@ export default function Register() {
                <ShadButton type="submit">
                   {loading ? <DotLoader></DotLoader> : "Register"}
                </ShadButton>
-               <p>Already have an account?  <Link to="/login" className="font-semibold underline hover:text-slate-600 text-slate-950">Login</Link></p>
+               <p>Already have an account?  <Link to="/auth/login" className="font-semibold underline hover:text-slate-600 text-slate-950">Login</Link></p>
             </div>
          </form >
       </div >
    )
 }
-
-
-
-// <FormField
-//    control={form.control}
-//    name="gender"
-//    render={({ field }) => (
-//       <FormItem>
-//          <FormLabel>Gender</FormLabel>
-//          <Select
-//             onValueChange={field.onChange}
-//             value={field.value}
-//          >
-//             <SelectTrigger className="w-[150px]">
-//                <SelectValue placeholder="Select Gender" />
-//             </SelectTrigger>
-//             <SelectContent>
-//                <SelectItem value="male">Male</SelectItem>
-//                <SelectItem value="female">Female</SelectItem>
-//                <SelectItem value="others">Others</SelectItem>
-//             </SelectContent>
-//          </Select>
-//       </FormItem>
-//    )}
-// />
