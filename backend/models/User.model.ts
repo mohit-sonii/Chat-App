@@ -25,11 +25,13 @@ const UserSchema: Schema = new mongoose.Schema({
       required: true,
       enum: Object.values(Gender)
    },
-   conversation_id: {
-      type: Types.ObjectId,
-      ref: 'Conversation',
-      default: null
-   }
+   conversation_id: [
+      {
+         type: Types.ObjectId,
+         ref: 'Conversation',
+         default: null
+      }
+   ]
 })
 
 const User = mongoose.model<UserModel>('User', UserSchema)

@@ -24,7 +24,7 @@ export const sendMessage = async (req: Request, res: Response) => {
          })
          await User.updateMany(
             { _id: { $in: [senderId, receiverId] } },
-            { $set: { conversation_id: conversation._id } }
+            { $push: { conversation_id: conversation._id } }
          );
       }
 

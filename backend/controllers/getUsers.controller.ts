@@ -19,3 +19,18 @@ export const getUsers = async (req: Request, res: Response) => {
       return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error)
    }
 }
+
+export async function searchResult(req: Request, res: Response) {
+   try {
+      const username = req.query.username
+      const user = await User.findOne({ username })
+      if (user) return ApiResponse(res, 202, true, 'User Found', user)
+      else
+         return ApiResponse(res, 200, false, 'No User Found')
+   } catch (error: any) {
+      console.log(error, 'Error while Searching for users')
+      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error)
+   }
+}
+
+

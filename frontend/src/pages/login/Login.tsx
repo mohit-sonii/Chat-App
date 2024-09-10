@@ -13,7 +13,7 @@ const Login = () => {
       password: "",
    });
 
-   const { loading, login } = useLogin();
+   const { loading, Login } = useLogin();
    const { newToast } = useToast()
 
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +26,7 @@ const Login = () => {
             }
             return
          }
-         await login(inputs)
+         await Login(inputs)
       } catch (error: any) {
          newToast(error.message)
       }

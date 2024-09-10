@@ -7,7 +7,7 @@ export const tokenGeneration = (userId: string, res: Response) => {
    const token = jwt.sign(
       { userId },
       process.env.Token_secret || 'fallback_secret_key',
-      { expiresIn: '30d' }
+      { expiresIn: '15d' }
    )
    const options: cookieOptions = {
       httpOnly: true,
