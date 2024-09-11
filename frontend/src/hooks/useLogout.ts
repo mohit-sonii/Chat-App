@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import axios, { AxiosError } from "axios"
 
-
 export function useLogout() {
    const [loading, setLoading] = useState<boolean>(false)
    const { newToast } = useToast()

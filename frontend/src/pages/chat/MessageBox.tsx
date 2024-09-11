@@ -3,7 +3,7 @@ import React from 'react'
 
 function MessageBox() {
   return (
-    <div>MessageBox</div>
+    <div className='grid col-span-6'>MessageBox</div>
   )
 }
 

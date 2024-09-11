@@ -20,7 +20,7 @@ export default function Register() {
    })
    const { loading, register } = useRegister()
    const { newToast } = useToast()
-   
+
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       try {
@@ -32,7 +32,7 @@ export default function Register() {
             return
          }
          await register(form)
-      } catch (error:any) {
+      } catch (error: any) {
          newToast(error.message)
       }
    }
@@ -44,7 +44,7 @@ export default function Register() {
    }
 
    return (
-      <div className="flex flex-col gap-10 shadow-lg mb-4 rounded-lg border border-gray-300 w-[80%] md:w-[30%] justify-center items-center p-4 m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="flex flex-col gap-10 shadow-lg mb-4 rounded-lg border border-gray-300 w-[80%] md:w-[30%] justify-center items-center p-4 m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-300">
          <h1 className="text-3xl text-black font-bold">Hello User !!</h1>
          <form className="w-full m-auto justify-center items-center flex gap-5" onSubmit={handleSubmit}>
 
@@ -58,7 +58,7 @@ export default function Register() {
 
             <div className="flex flex-col gap-1 w-[80%]">
                <label htmlFor="gender" className="text-black font-medium text-sm">Gender</label>
-               <select name="gender" value={form.gender} className="p-2 outline-none bg-transparent rounded-md border-gray-300 border-2 text-sm text-slate-800" onChange={(e) => { setForm({ ...form, ['gender']: e.target.value }) }}>
+               <select name="gender" value={form.gender} className="p-2 outline-none bg-transparent rounded-md border-gray-500 border-2 text-sm text-slate-800" onChange={(e) => { setForm({ ...form, ['gender']: e.target.value }) }}>
                   <option value="">Select an option</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -69,7 +69,11 @@ export default function Register() {
                <ShadButton type="submit">
                   {loading ? <DotLoader></DotLoader> : "Register"}
                </ShadButton>
-               <p>Already have an account?  <Link to="/auth/login" className="font-semibold underline hover:text-slate-600 text-slate-950">Login</Link></p>
+               <p className="text-slate-800">Already have an account?&nbsp;&nbsp;
+                  <Link to="/auth/login" className="font-semibold underline hover:text-slate-600 text-slate-950">
+                     Login
+                  </Link>
+               </p>
             </div>
          </form >
       </div >

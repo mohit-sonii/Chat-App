@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import Input from "@/components/input";
 import useLogin from "@/hooks/useLogin";
 import { ShadButton } from "@/components/ui/button";
@@ -38,7 +38,7 @@ const Login = () => {
    }
 
    return (
-      <div className="flex flex-col gap-10 shadow-lg mb-4 rounded-lg border border-gray-300 w-[80%] md:w-[30%] justify-center items-center p-4 m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="flex flex-col gap-10 shadow-lg mb-4 rounded-lg border border-gray-300 w-[80%] md:w-[30%] justify-center items-center p-4 m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-300">
          <h1 className="text-3xl text-black font-bold">Welcome Back !!</h1>
          <form className="w-full m-auto justify-center items-center flex gap-5" onSubmit={handleSubmit}>
             <Input htmlFor="username" type="text" name="username" value={inputs.username} handleChange={handleChange} label="Username" />
@@ -47,7 +47,11 @@ const Login = () => {
                <ShadButton type="submit">
                   {loading ? <DotLoader></DotLoader> : "Login"}
                </ShadButton>
-               <p>Need an account?  <Link to="/auth/register" className="font-semibold underline hover:text-slate-600 text-slate-950">Register</Link></p>
+               <p className="text-slate-800">Need an account?&nbsp;&nbsp;
+                  <Link to="/auth/register" className="font-semibold underline hover:text-slate-600 text-slate-950">
+                     Register
+                  </Link>
+               </p>
             </div>
          </form>
       </div>
