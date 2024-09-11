@@ -14,7 +14,7 @@ function SearchResult({ call }: { call: SearchResultObjectProps }) {
          <h1>{call.message}</h1>
       ) : (
          <Card avatar={call.data.profilePic} fullname={call.data.fullname} />
-      )
+      ) 
    )
 }
 

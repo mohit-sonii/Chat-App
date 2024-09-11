@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Input from "@/components/input";
 import useLogin from "@/hooks/useLogin";
 import { ShadButton } from "@/components/ui/button";
