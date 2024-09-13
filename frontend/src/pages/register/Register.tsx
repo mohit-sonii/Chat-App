@@ -67,7 +67,7 @@ export default function Register() {
             </div>
             <div className="flex gap-4 flex-col">
                <ShadButton type="submit">
-                  {loading ? <DotLoader></DotLoader> : "Register"}
+                  {loading ? <DotLoader bg='bg-white'></DotLoader> : "Register"}
                </ShadButton>
                <p className="text-slate-800">Already have an account?&nbsp;&nbsp;
                   <Link to="/auth/login" className="font-semibold underline hover:text-slate-600 text-slate-950">

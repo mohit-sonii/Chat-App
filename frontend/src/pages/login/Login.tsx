@@ -45,7 +45,7 @@ const Login = () => {
             <Input htmlFor="password" type="password" name="password" value={inputs.password} handleChange={handleChange} label="Password" />
             <div className="flex gap-4 flex-col">
                <ShadButton type="submit">
-                  {loading ? <DotLoader></DotLoader> : "Login"}
+                  {loading ? <DotLoader bg='bg-white'></DotLoader> : "Login"}
                </ShadButton>
                <p className="text-slate-800">Need an account?&nbsp;&nbsp;
                   <Link to="/auth/register" className="font-semibold underline hover:text-slate-600 text-slate-950">

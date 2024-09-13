@@ -5,7 +5,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import reducers from './reducer'
 
 const store = configureStore({
-   reducer: reducers
+   reducer: {
+     'auth': reducers
+   }
 })
 
 export default store

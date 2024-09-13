@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { ApiResponse } from "../utils/Response.util";
 import User from "../models/User.model";
 import bcrypt from 'bcryptjs'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import { tokenGeneration } from "../utils/jwt.util";
 import { RegisterValidation } from "../zod/zodValidaton";
 import { z } from 'zod'
@@ -80,3 +81,22 @@ export const logout = async (_: Request, res: Response) => {
    }
 }
 
+
+export  async function hasCookies(req: Request, res: Response) {
+   try {
+
+      const token = req.cookies.token
+      if (!token) return ApiResponse(res, 401, false, 'Unauthorized User')
+      const decode = jwt.verify(token, process.env.Token_secret || '') as JwtPayload
+      if (!decode) return ApiResponse(res, 401, false, 'Expired Token')
+
+      const user = await User.findById(decode.userId)
+      if (!user) return ApiResponse(res, 404, false, 'User does not exist')
+
+      return ApiResponse(res, 200, true, 'User Found', user)
+
+   } catch (error: any) {
+      console.log(error, 'Error while Reading queries')
+      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error)
+   }
+}

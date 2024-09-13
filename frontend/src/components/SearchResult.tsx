@@ -8,7 +8,6 @@ interface SearchResultObjectProps {
 }
 
 function SearchResult({ call }: { call: SearchResultObjectProps }) {
-   console.log(call)
    return (
       !call.success ? (
          <h1>{call.message}</h1>
