@@ -4,11 +4,7 @@ import { useToast } from "./useToast"
 import { useNavigate } from "react-router-dom"
 import { currentUser, login } from "@/redux/reducer"
 import { useDispatch } from "react-redux"
-
-interface LoginType {
-   username: string,
-   password: string
-}
+import { LoginType } from "@/utils/interface"
 
 function useLogin() {
    const [loading, setLoading] = useState<boolean>(false)

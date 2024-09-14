@@ -1,16 +1,5 @@
-import { ChangeEventHandler } from "react"
 
-
-interface InputProps {
-   htmlFor: string,
-   label: string,
-   type: string,
-   name: string,
-   value: string,
-   handleChange: ChangeEventHandler<HTMLInputElement>,
-   otherClasses?: string
-}
-
+import { InputProps } from "@/utils/interface"
 
 function Input({ htmlFor, label, type, name, value, handleChange, otherClasses }: InputProps) {
    return (

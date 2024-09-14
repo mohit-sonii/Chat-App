@@ -6,8 +6,9 @@
    font-family: "Montserrat", sans-serif;
    line-height: normal;
    font-style: normal;
+   box-sizing: border-box;
    flex-wrap: wrap;
-   overflow:hidden;
+   /* overflow:hidden; */
 }
 
 @layer base {

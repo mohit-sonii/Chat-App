@@ -1,6 +1,6 @@
 import useSearch from '@/hooks/useSearch'
 import { FaSearch } from "react-icons/fa";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SearchResult from './SearchResult';
 
 
@@ -20,6 +20,9 @@ function Search() {
       setResponse(res)
       setVisible(true)
    }
+   useEffect(() => {
+      if (inputname.length == 0) setVisible(false)
+   }, [inputname])
 
 
    return (

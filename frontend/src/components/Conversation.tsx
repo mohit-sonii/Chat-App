@@ -4,20 +4,10 @@ import { useToast } from "@/hooks/useToast"
 import { useEffect, useState } from "react"
 import Card from "./Card"
 import { DotLoader } from "./ui/dotLoader"
-// import { useSelector } from "react-redux"
+import { conversationData } from "@/utils/interface"
 
-interface conversationData {
-   _id: string,
-   fullname: string,
-   username: string,
-   gender: string,
-   profilePic: string,
-   conversation_id: string[]
-   __v: number
-}
 
 export const Conversation = () => {
-   // const currentUser = useSelector((state: any) => state.auth?.userData)
    const { loading, conversations } = useConversation()
    const { newToast } = useToast()
    const [data, setData] = useState<conversationData[] | string>([])
@@ -38,15 +28,14 @@ export const Conversation = () => {
    }, [])
 
    return (
-      <section className="flex flex-col gap-4 max-h-full w-full p-2">
+      <section className="flex gap-4 overflow-y-auto w-full p-2 max-h-[500px]">
          {loading
             ?
             <DotLoader bg='bg-black' />
             :
-
             Array.isArray(data) ? (
                data.map((item: conversationData) => (
-                  <Card key={item._id} avatar={item.profilePic} fullname={item.fullname} />
+                  <Card key={item._id} item={item} />
                ))
             ) : (
                <p>No conversations found</p>

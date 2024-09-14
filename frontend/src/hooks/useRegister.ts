@@ -4,14 +4,8 @@ import axios from 'axios'
 import { useToast } from "./useToast"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
+import { RegisterType } from "@/utils/interface"
 
-interface RegisterType {
-   fullname: string,
-   username: string,
-   password: string,
-   confirmPassword: string,
-   gender: string
-}
 
 export function useRegister() {
 

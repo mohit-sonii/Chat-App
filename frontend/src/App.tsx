@@ -5,7 +5,7 @@ import Register from "./pages/register/Register"
 import Chat from './pages/chat/Chat'
 import { useEffect, useState } from 'react'
 import { hasCookies } from './hooks/useHasCookies'
-
+import "./App.css"
 
 function App() {
 

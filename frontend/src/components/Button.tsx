@@ -1,10 +1,7 @@
 
 import { Link } from "react-router-dom"
+import { ButtonProps } from "@/utils/interface"
 
-interface ButtonProps {
-   innerText: string,
-   href: string | '',
-}
 function Button({ innerText, href }: ButtonProps) {
 
    return (
