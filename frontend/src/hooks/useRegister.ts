@@ -1,4 +1,4 @@
-import { currentUser, login } from "@/redux/reducer"
+import { currentUser, login } from "@/redux/auth"
 import { useState } from "react"
 import axios from 'axios'
 import { useToast } from "./useToast"

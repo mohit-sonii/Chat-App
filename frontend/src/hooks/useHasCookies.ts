@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import axios from "axios"
-import { currentUser, login } from "@/redux/reducer"
+import { currentUser, login } from "@/redux/auth"
 
 
 export function hasCookies() {

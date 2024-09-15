@@ -4,7 +4,7 @@ import SideBar from './SideBar'
 
 function Chat() {
    return (
-      <div className='grid md:grid-cols-10   grid-cols-1 w-full  max-h-screen'>
+      <div className=' h-full grid grid-cols-2 w-full '>
          <SideBar />
          <MessageBox />
       </div>

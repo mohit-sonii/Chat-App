@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { logout } from "@/redux/reducer"
+import { logout } from "@/redux/auth"
 import { useToast } from "./useToast"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"

@@ -6,8 +6,7 @@ import authRoute from './routes/auth.routes'
 import messageRoute from './routes/message.routes'
 import userRoute from './routes/getUsers.routes'
 import cors from 'cors'
-
-const app = express()
+import { app, server } from './socket/socket'
 
 dotenv.config()
 
@@ -26,7 +25,7 @@ app.use('/api/auth', authRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/users', userRoute)
 
-app.listen(process.env.PORT || 8000, async() => {
+server.listen(process.env.PORT || 8000, async() => {
    try {
       await dbConnect()
       console.log(`Server is running on port ${process.env.PORT}`);

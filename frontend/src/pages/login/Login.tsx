@@ -38,7 +38,7 @@ const Login = () => {
    }
 
    return (
-      <div className="flex flex-col gap-10 shadow-lg mb-4 rounded-lg border border-gray-300 w-[80%] md:w-[30%] justify-center items-center p-4 m-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-300">
+      <div className="flex gap-5 shadow-lg rounded-lg border border-gray-300 w-[90%] sm:w-[50%]  md:w-[30%] justify-center items-center p-4 m-auto ">
          <h1 className="text-3xl text-black font-bold">Welcome Back !!</h1>
          <form className="w-full m-auto justify-center items-center flex gap-5" onSubmit={handleSubmit}>
             <Input htmlFor="username" type="text" name="username" value={inputs.username} handleChange={handleChange} label="Username" />

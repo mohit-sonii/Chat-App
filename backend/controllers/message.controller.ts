@@ -4,6 +4,7 @@ import Conversation from "../models/Conversation.model"
 import { ApiResponse } from "../utils/Response.util"
 import Message from "../models/Message.model"
 import User from "../models/User.model"
+import { getReceiverSocketId, io } from "../socket/socket"
 
 export const sendMessage = async (req: Request, res: Response) => {
    try {
@@ -39,6 +40,14 @@ export const sendMessage = async (req: Request, res: Response) => {
       }
 
       await Promise.all([conversation.save(), newMessage.save()])
+
+
+      const receiverSocketId = getReceiverSocketId(receiverId)
+      if (receiverSocketId) {
+         io.to(receiverSocketId).emit('newMessage', newMessage)
+      }
+
+
       return ApiResponse(res, 200, true, 'Message Sent Successfully', conversation)
    } catch (error: any) {
       console.log(error, 'Error while sending message')

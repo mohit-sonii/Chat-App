@@ -2,11 +2,13 @@
 
 
 import { configureStore } from "@reduxjs/toolkit";
-import reducers from './reducer'
+import reducers from './auth'
+import messageReducer from './message'
 
 const store = configureStore({
    reducer: {
-     'auth': reducers
+      'auth': reducers,
+      'message': messageReducer
    }
 })
 

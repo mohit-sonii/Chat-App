@@ -5,7 +5,6 @@ import Register from "./pages/register/Register"
 import Chat from './pages/chat/Chat'
 import { useEffect, useState } from 'react'
 import { hasCookies } from './hooks/useHasCookies'
-import "./App.css"
 
 function App() {
 
@@ -33,7 +32,7 @@ function App() {
 
    return (
       <>
-         <div className="flex justify-center items-center">
+         <div className="flex justify-center items-center m-auto h-full">
             <Routes>
                <Route path="/auth/login" element={<Login />} />
                <Route path="/auth/register" element={<Register />} />

@@ -1,4 +1,4 @@
-import { currentChat } from "@/redux/reducer"
+import { currentChat } from "@/redux/message"
 import { conversationData } from "@/utils/interface"
 import { useDispatch } from "react-redux"
 

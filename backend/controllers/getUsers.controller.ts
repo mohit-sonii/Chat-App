@@ -45,7 +45,6 @@ export async function searchResult(req: Request, res: Response) {
       else
          return ApiResponse(res, 200, false, 'No User Found')
    } catch (error: any) {
-      console.log(error, 'Error while Searching for users')
-      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error)
+      return ApiResponse(res, error.message ? 400 : 500, false, error.response.data.message || 'Internal Server Error', null, error)
    }
 }
