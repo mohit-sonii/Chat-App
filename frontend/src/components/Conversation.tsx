@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import Card from "./Card"
 import { DotLoader } from "./ui/dotLoader"
 import { conversationData } from "@/utils/interface"
-import { useSocketContext } from "@/context/SocketContext"
+// import { useSocketContext } from "@/context/SocketContext"
 
 
 export const Conversation = () => {
@@ -13,7 +13,7 @@ export const Conversation = () => {
    const { newToast } = useToast()
    const [data, setData] = useState<conversationData[] | string>([])
 
-   const { onlineUser } = useSocketContext()
+   // const { onlineUser } = useSocketContext()
    
    const runConversationFunction = async () => {
       try {

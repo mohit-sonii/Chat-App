@@ -9,7 +9,7 @@ import { hasCookies } from './hooks/useHasCookies'
 function App() {
 
    const { cookies } = hasCookies()
-   const [auth, setAuth] = useState(false)
+   const [_, setAuth] = useState(false)
 
    const navigate = useNavigate()
 
