@@ -16,7 +16,7 @@ export function hasCookies() {
          }
          return false;
       } catch (error: any) {
-         return false
+         return false    
       }
    }
 

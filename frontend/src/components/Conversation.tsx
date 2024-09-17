@@ -6,7 +6,6 @@ import Card from "./Card"
 import { DotLoader } from "./ui/dotLoader"
 import { conversationData } from "@/utils/interface"
 import { useListenMessage } from "@/hooks/useListenMessage"
-// import { useSocketContext } from "@/context/SocketContext"
 
 
 export const Conversation = () => {
@@ -15,8 +14,8 @@ export const Conversation = () => {
    const [data, setData] = useState<conversationData[] | string>([])
 
    useListenMessage()
-   // const { onlineUser } = useSocketContext()
    
+
    const runConversationFunction = async () => {
       try {
          const result = await conversations()
@@ -43,8 +42,8 @@ export const Conversation = () => {
                   <Card key={item._id} item={item} />
                ))
             ) : (
-               <p>No conversations found</p>
-            )
+         <p>No conversations found</p>
+         )
 
          }
       </section>

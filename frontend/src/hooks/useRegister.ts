@@ -20,14 +20,10 @@ export function useRegister() {
          const response = await axios.post('/api/auth/register', data, {
             withCredentials: true
          })
-         if (!response.data) {
-            throw new Error('Error')
-         }
          dispatch(login(response.data.data))
          dispatch(currentUser(response.data.data))
          navigate('/chat')
       } catch (error: any) {
-         console.log(error)
          newToast(error.response.data.message)
          return
       } finally {

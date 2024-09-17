@@ -97,6 +97,6 @@ export  async function hasCookies(req: Request, res: Response) {
 
    } catch (error: any) {
       console.log(error, 'Error while Reading queries')
-      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error)
+      return ApiResponse(res, error.message ? 400 : 500, false, error.response.data.message || 'Internal Server Error', null, error)
    }
 }
