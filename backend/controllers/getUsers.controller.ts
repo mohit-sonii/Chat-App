@@ -38,7 +38,6 @@ export const getUsers = async (req: Request, res: Response) => {
       return ApiResponse(res, 200, true, 'Users fetched successfully', filteredUsers);
 
    } catch (error: any) {
-      console.error(error.message, 'Error while fetching users');
       return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error);
    }
 };

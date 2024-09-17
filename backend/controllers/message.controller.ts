@@ -49,7 +49,6 @@ export const sendMessage = async (req: Request, res: Response) => {
 
       return ApiResponse(res, 200, true, 'Message Sent Successfully', conversation)
    } catch (error: any) {
-      console.log(error, 'Error while sending message')
       return ApiResponse(res, 500, false, error.message || 'Internal Server Error')
    }
 }
@@ -70,7 +69,6 @@ export const getMessage = async (req: Request, res: Response) => {
       return ApiResponse(res, 200, true, 'Data fetched successfully', conversation.messages)
 
    } catch (error: any) {
-      console.log(error, 'Error while sending message')
       return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error')
    }
 }

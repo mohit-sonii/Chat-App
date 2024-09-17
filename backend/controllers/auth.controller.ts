@@ -58,13 +58,12 @@ export const login = async (req: Request, res: Response) => {
       })
       if (!user) return ApiResponse(res, 400, false, 'User does not exist.')
       const checkPassword = bcrypt.compare(password, user.password)
-      if (!checkPassword) throw new Error('Entered credentials are incorrect')
+      if (!checkPassword) return ApiResponse(res, 400, false, 'Entered credentials are incorrect.')
       tokenGeneration(user._id.toString(), res)
       return ApiResponse(res, 201, true, 'User Logged in', user)
 
    } catch (error: any) {
-      console.log(error, 'Error while login a user')
-      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error')
+      return ApiResponse(res, error.message ? 400 : 500, false, error.resposne.data.message || 'Internal Server Error')
    }
 }
 export const logout = async (_: Request, res: Response) => {
@@ -76,7 +75,6 @@ export const logout = async (_: Request, res: Response) => {
       })
       return ApiResponse(res, 200, true, 'Logout Successfully')
    } catch (error: any) {
-      console.log(error, 'Error while logging out a user')
       return ApiResponse(res, 500, false, error.message || 'Internal Server Error')
    }
 }
@@ -96,7 +94,6 @@ export  async function hasCookies(req: Request, res: Response) {
       return ApiResponse(res, 200, true, 'User Found', user)
 
    } catch (error: any) {
-      console.log(error, 'Error while Reading queries')
       return ApiResponse(res, error.message ? 400 : 500, false, error.response.data.message || 'Internal Server Error', null, error)
    }
 }

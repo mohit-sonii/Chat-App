@@ -7,8 +7,8 @@ export default defineConfig({
    server: {
       proxy: {
          '/api/': {
-            // target: 'https://chat-app-4-d2tf.onrender.com',
-            target: 'http://localhost:8000',
+            target: 'https://chat-app-4-d2tf.onrender.com',
+            // target: 'http://localhost:8000',
             changeOrigin: true,
          },
       },
