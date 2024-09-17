@@ -3,39 +3,46 @@ import { Request, Response } from "express"
 import { ApiResponse } from "../utils/Response.util"
 import Conversation from "../models/Conversation.model"
 import User from "../models/User.model"
-import { ConversationModel } from "../utils/interfaces.util"
-
 
 export const getUsers = async (req: Request, res: Response) => {
    try {
-      const conversations = req.userData?.conversation_id
-
-      if (conversations.length == 0) return ApiResponse(res, 204, true, 'No chats available')
-
-      const conversationResult: (ConversationModel | null)[] = [];
-      for (const i of conversations) {
-         const conversation = await Conversation.findById(i);
-         conversationResult.push(conversation);
+      const conversations = req.userData?.conversation_id || [];
+      if (conversations.length === 0) {
+         return ApiResponse(res, 204, true, 'No chats available');
       }
-      const usersResult = [];
-      for (let i = 0; i < conversationResult.length; i++) {
-         const conversation = conversationResult[i];
 
-         if (conversation && 'participants' in conversation) {
-            const participantId = conversation.participants[1];
-            const user = await User.findById(participantId).select("-password");
-            if (user) {
-               usersResult.push(user);
+      const conversationResult = await Conversation.find({ _id: { $in: conversations } });
+
+      const usersResult = await Promise.all(
+         conversationResult.map(async (conversation) => {
+            if (conversation && 'participants' in conversation) {
+               const [senderId, receiverId] = conversation.participants;
+               const sender = await User.findById(senderId).select("-password");
+
+               // Check if the current user is the sender
+               if (sender?.username === req.userData.username) {
+                  // Current user is the sender, fetch the receiver
+                  const receiver = await User.findById(receiverId).select("-password");
+                  return receiver;
+               } else {
+                  // Current user is the receiver, fetch the sender
+                  return sender;
+               }
             }
-         }
-      }
-      return ApiResponse(res, 200, true, 'User Fetched Successfully', usersResult)
+         })
+      );
+
+      // Filter out any null values (in case of missing users)
+      const filteredUsers = usersResult.filter(user => user !== null);
+
+      return ApiResponse(res, 200, true, 'Users fetched successfully', filteredUsers);
 
    } catch (error: any) {
-      console.log(error.message, 'Error while fetching Users')
-      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error)
+      console.error(error.message, 'Error while fetching users');
+      return ApiResponse(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error', null, error);
    }
-}
+};
+
 
 export async function searchResult(req: Request, res: Response) {
    try {

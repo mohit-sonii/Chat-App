@@ -2,14 +2,15 @@ import { useState } from "react"
 import { useToast } from "./useToast"
 import axios, { AxiosError } from "axios"
 import { conversationData } from "@/utils/interface"
-import { useDispatch, useSelector } from "react-redux"
-import { currentMessages } from "@/redux/message"
+// import { useDispatch, useSelector } from "react-redux"
+// import { currentMessages } from "@/redux/message"
 
 export const useMessages = () => {
+
    const [loading, setLoading] = useState<boolean>(false)
    const { newToast } = useToast()
-   const currentChatMessages = useSelector((state: any) => state.message.message)
-   const dispatch = useDispatch()
+  
+
    const getMessages = async (ID: string) => {
       setLoading(true)
       try {
@@ -25,9 +26,6 @@ export const useMessages = () => {
    const sendMessages = async (message: string, current: conversationData) => {
       setLoading(true)
       try {
-         if (message) {
-            dispatch(currentMessages([...currentChatMessages, message]))
-         }
          const response = await axios.post(`/api/messages/send-message/${current._id}`, { message }, { withCredentials: true })
          return response.data
       } catch (error: any) {

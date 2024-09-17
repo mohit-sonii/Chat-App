@@ -2,19 +2,23 @@
 import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { messageTypes } from '@/utils/interface'
+import { useListenMessage } from '@/hooks/useListenMessage'
 
 function Message({ message }: { message: messageTypes[] }) {
 
+   useListenMessage()
    const user = useSelector((state: any) => state.auth?.userData)
    const lastMessageRef = useRef<HTMLDivElement | null>(null)
 
    useEffect(() => {
-      setTimeout(() => {
-         if (lastMessageRef.current) {
-            lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' })
+      const handleScroll = () => {
+         if (lastMessageRef.current && message.length > 0) {
+            lastMessageRef.current.scrollIntoView({ behavior: 'smooth' });
          }
-      }, 100);
-   }, [message])
+      };
+
+      handleScroll();
+   }, [message.length]);
 
    return (
       <div>

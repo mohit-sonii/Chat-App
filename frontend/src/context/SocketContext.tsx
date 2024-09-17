@@ -33,13 +33,14 @@ export const SocketContextProvider = ({ children }: ChildrenProps) => {
 
       if (currentUser && currentUser._id) {
          const socket = io('http://localhost:8000', {
+            withCredentials: true,
             query: {
                userId: currentUser._id
             }
          })
          setSocket(socket)
          socket.on('getOnlineUsers', (users: string[]) => {
-            setOnlineUser(users)
+            setOnlineUser([...users])
          })
          return () => {
             socket.close()

@@ -44,9 +44,8 @@ export const sendMessage = async (req: Request, res: Response) => {
 
       const receiverSocketId = getReceiverSocketId(receiverId)
       if (receiverSocketId) {
-         io.to(receiverSocketId).emit('newMessage', newMessage)
+         io.to(receiverSocketId).emit("newMessage", newMessage)
       }
-
 
       return ApiResponse(res, 200, true, 'Message Sent Successfully', conversation)
    } catch (error: any) {

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import Card from "./Card"
 import { DotLoader } from "./ui/dotLoader"
 import { conversationData } from "@/utils/interface"
+import { useListenMessage } from "@/hooks/useListenMessage"
 // import { useSocketContext } from "@/context/SocketContext"
 
 
@@ -13,6 +14,7 @@ export const Conversation = () => {
    const { newToast } = useToast()
    const [data, setData] = useState<conversationData[] | string>([])
 
+   useListenMessage()
    // const { onlineUser } = useSocketContext()
    
    const runConversationFunction = async () => {
@@ -31,7 +33,7 @@ export const Conversation = () => {
    }, [])
 
    return (
-      <section className="flex gap-4 overflow-y-auto w-full p-2 max-h-[500px]">
+      <section className="flex gap-4 overflow-y-auto w-full p-2 ">
          {loading
             ?
             <DotLoader bg='bg-black' />
