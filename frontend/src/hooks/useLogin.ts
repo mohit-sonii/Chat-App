@@ -18,18 +18,17 @@ function useLogin() {
          const response = await axios.post('/api/auth/login', data, {
             withCredentials: true
          })
-         if (!response.data) throw new Error('Error while fetching your details!!')
          dispatch(login(response.data.data))
          dispatch(currentUser(response.data.data))
          navigate('/chat')
       } catch (error: any) {
          if (error instanceof AxiosError) {
             newToast(error.response?.data.message)
-            return
          }
          else {
             newToast(error.message)
          }
+         return
       } finally {
          setLoading(false)
       }

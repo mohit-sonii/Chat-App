@@ -33,7 +33,7 @@ export default function Register() {
          }
          await register(form)
       } catch (error: any) {
-         newToast(error.message)
+         newToast(error)
       }
    }
 

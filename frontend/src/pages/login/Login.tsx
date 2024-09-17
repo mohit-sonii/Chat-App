@@ -28,7 +28,7 @@ const Login = () => {
          }
          await Login(inputs)
       } catch (error: any) {
-         newToast(error.message)
+         newToast(error)
       }
    }
 
