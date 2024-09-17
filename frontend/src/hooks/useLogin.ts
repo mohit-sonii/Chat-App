@@ -22,6 +22,7 @@ function useLogin() {
          dispatch(currentUser(response.data.data))
          navigate('/chat')
       } catch (error: any) {
+         console.log(error)
          if (error instanceof AxiosError) {
             newToast(error.response?.data.message)
          }

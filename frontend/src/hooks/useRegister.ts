@@ -24,6 +24,7 @@ export function useRegister() {
          dispatch(currentUser(response.data.data))
          navigate('/chat')
       } catch (error: any) {
+         console.log(error)
          newToast(error.response.data.message)
          return
       } finally {

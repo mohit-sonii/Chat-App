@@ -33,6 +33,7 @@ export default function Register() {
          }
          await register(form)
       } catch (error: any) {
+         console.log(error)
          newToast(error)
       }
    }

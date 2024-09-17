@@ -28,6 +28,7 @@ const Login = () => {
          }
          await Login(inputs)
       } catch (error: any) {
+         console.log(error)
          newToast(error)
       }
    }
