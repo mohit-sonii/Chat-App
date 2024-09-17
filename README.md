@@ -5,6 +5,7 @@ This is complete MERN stack dedicated project and it is functional on desktop ve
 
 <br><br> 
 As I need state management for users, You have to register for starting to chat. Search "mohit" you will find me and then you can message me from there.
-
+<hr>
+many functionalities are under development so will update accordingly
 <br><br>
 USE DESKTOP VERSION ONLY
