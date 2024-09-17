@@ -28,7 +28,7 @@ export function useRegister() {
          navigate('/chat')
       } catch (error: any) {
          console.log(error)
-         newToast(error.message)
+         newToast(error.response.data.message)
          return
       } finally {
          setLoading(false)

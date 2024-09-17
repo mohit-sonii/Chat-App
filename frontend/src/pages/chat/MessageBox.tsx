@@ -5,6 +5,7 @@ import { IoSend } from "react-icons/io5";
 import { useMessages } from "@/hooks/useMessages";
 import Message from "@/components/Message";
 import { currentMessages } from "@/redux/message";
+import { useToast } from "@/hooks/useToast";
 
 function MessageBox() {
 
@@ -14,7 +15,7 @@ function MessageBox() {
    const [messageData, setMessageData] = useState([]);
    const currentChatMessages = useSelector((state: any) => state.message.message)
    const dispatch = useDispatch()
-
+   const { newToast } = useToast()
    const handleClick = async () => {
       if (message.length !== 0) {
          await sendMessages(message, current);
@@ -29,6 +30,7 @@ function MessageBox() {
             const data = await getMessages(current._id);
             setMessageData(data.data);
          } catch (error: any) {
+            newToast(error.response.data.message)
             console.error("Error fetching messages:", error.message);
          }
       }
@@ -36,7 +38,7 @@ function MessageBox() {
 
    useEffect(() => {
       fetchMessages();
-   }, [currentChatMessages,current,dispatch]);
+   }, [currentChatMessages, current, dispatch]);
 
    return (
       <div className="w-full h-[90%] m-auto mt-3 flex flex-col overflow-hidden">

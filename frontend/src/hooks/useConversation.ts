@@ -12,7 +12,7 @@ export function useConversation() {
          const response = await axios.get('/api/users/')
          return response.data
       } catch (error: any) {
-         newToast(error.message)
+         newToast(error.response.data.message)
       } finally {
          setloading(false)
       }

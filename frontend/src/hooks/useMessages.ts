@@ -17,7 +17,7 @@ export const useMessages = () => {
          const response = await axios.get(`/api/messages/get-messages/${ID}`)
          return (response.data)
       } catch (error: any) {
-         newToast(error.message)
+         newToast(error.response.data.message)
       } finally {
          setLoading(false)
       }
