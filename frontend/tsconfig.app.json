@@ -5,7 +5,6 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -17,6 +16,7 @@
     "moduleResolution": "Node",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
+    "esModuleInterop": true, 
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
