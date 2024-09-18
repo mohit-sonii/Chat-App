@@ -23,6 +23,6 @@ export const Authentication = async (req: Request, res: Response, next: NextFunc
 
    } catch (error: any) {
       console.log(error, 'Error while Authenticating User')
-      return ApiResponse(res, 500, false, error.message || 'Internal Server Error')
+      return ApiResponse(res, 500, false, error)
    }
 }
