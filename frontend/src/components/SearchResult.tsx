@@ -6,7 +6,7 @@ function SearchResult({ call }: { call: SearchResultObjectProps }) {
       call.success ? (
          <Card item={call.data} />
       ) : (
-         <h1>{call.message} I wonder why Please lgin is coming</h1>
+         <h1>{call.message}</h1>
       )
    )
 }
