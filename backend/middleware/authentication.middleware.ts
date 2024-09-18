@@ -7,14 +7,11 @@ import { JwtPayload } from "../utils/interfaces.util";
 
 export const Authentication = async (req: Request, res: Response, next: NextFunction) => {
    try {
-      console.log('checked fo authentication middleware')
       const token = req.cookies.token
-      console.log(token,'this is token')
       if (!token) throw new Error('Please Login !!!')
 
       const decode = jwt.verify(token, process.env.Token_secret || '') as JwtPayload
 
-      console.log(decode,'this isi decoded versaion of token')
       
       if (!decode) throw new Error('Please Login !!!')
 
@@ -25,7 +22,7 @@ export const Authentication = async (req: Request, res: Response, next: NextFunc
       next()
 
    } catch (error: any) {
-      console.log(error.message, 'Error while Authenticating User')
+      console.log(error, 'Error while Authenticating User')
       return ApiResponse(res, 500, false, error.message || 'Internal Server Error')
    }
 }
