@@ -31,8 +31,8 @@ const Authentication = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         next();
     }
     catch (error) {
-        console.log(error.message, 'Error while Authenticating User');
-        return (0, Response_util_1.ApiResponse)(res, 500, false, error.message || 'Internal Server Error');
+        console.log(error, 'Error while Authenticating User');
+        return (0, Response_util_1.ApiResponse)(res, 500, false, '', null, error);
     }
 });
 exports.Authentication = Authentication;

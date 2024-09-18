@@ -16,7 +16,7 @@ const io = new socket_io_1.Server(server, {
         origin: 'https://social-messaging-application.netlify.app',
         methods: ['GET', 'POST'],
         credentials: true,
-        // allowedHeaders: ['Content-Type'],
+        allowedHeaders: ['Content-Type'],
         // 'http://localhost:5173',
     }
 });
@@ -30,7 +30,7 @@ const userSocketMap = {};
 io.on('connection', (socket) => {
     // console.log('a user connected', socket.id) 
     const userId = socket.handshake.query.userId;
-    console.log(userId, 'this is user id after connection');
+    // console.log(userId,'this is user id after connection') 
     // we will store the current user Id acrross all the accounts
     if (userId && userId != 'undefined')
         userSocketMap[userId] = socket.id;

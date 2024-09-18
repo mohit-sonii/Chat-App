@@ -27,7 +27,7 @@ socket_1.app.use((0, cookie_parser_1.default)());
 const corsOptions = {
     origin: ['https://social-messaging-application.netlify.app'],
     methods: ['GET', 'POST'],
-    // allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type'],
     credentials: true
 };
 socket_1.app.use((0, cors_1.default)(corsOptions));
