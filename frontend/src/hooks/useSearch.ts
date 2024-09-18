@@ -9,7 +9,6 @@ export default function useSearch() {
    const search = async (username: string) => {
       setLoading(true)
       try {
-         console.log(username,'this is the username that a user searcrhed for')
          const response = await axios.get(`https://chat-app-4-d2tf.onrender.com/api/users/search?username=${username}`)
          console.log(response,'this i sthe rpoesne that shows when we send a search request')
          return response.data

@@ -8,9 +8,12 @@ import { JwtPayload } from "../utils/interfaces.util";
 export const Authentication = async (req: Request, res: Response, next: NextFunction) => {
    try {
       const token = req.cookies.token
+      console.log(token,'this is token')
       if (!token) throw new Error('Please Login !!!')
 
       const decode = jwt.verify(token, process.env.Token_secret || '') as JwtPayload
+
+      console.log(decode,'this isi decoded versaion of token')
       
       if (!decode) throw new Error('Please Login !!!')
 
