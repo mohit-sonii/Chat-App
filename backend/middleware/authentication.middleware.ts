@@ -12,7 +12,7 @@ export const Authentication = async (req: Request, res: Response, next: NextFunc
 
       const decode = jwt.verify(token, process.env.Token_secret || '') as JwtPayload
 
-      
+
       if (!decode) throw new Error('Please Login !!!')
 
       const user = await User.findById(decode.userId).select('-password')
@@ -23,6 +23,6 @@ export const Authentication = async (req: Request, res: Response, next: NextFunc
 
    } catch (error: any) {
       console.log(error, 'Error while Authenticating User')
-      return ApiResponse(res, 500, false, error)
+      return ApiResponse(res, 500, false, '', null, error)
    }
 }
