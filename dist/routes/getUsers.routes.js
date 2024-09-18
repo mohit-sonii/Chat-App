@@ -8,4 +8,5 @@ const authentication_middleware_1 = require("../middleware/authentication.middle
 const getUsers_controller_1 = require("../controllers/getUsers.controller");
 const router = express_1.default.Router();
 router.get('/', authentication_middleware_1.Authentication, getUsers_controller_1.getUsers);
+router.get('/search', authentication_middleware_1.Authentication, getUsers_controller_1.searchResult);
 exports.default = router;

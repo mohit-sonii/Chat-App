@@ -47,11 +47,13 @@ const UserSchema = new mongoose_1.default.Schema({
         required: true,
         enum: Object.values(interfaces_util_1.Gender)
     },
-    conversation_id: {
-        type: mongoose_1.Types.ObjectId,
-        ref: 'Conversation',
-        default: null
-    }
+    conversation_id: [
+        {
+            type: mongoose_1.Types.ObjectId,
+            ref: 'Conversation',
+            default: null
+        }
+    ]
 });
 const User = mongoose_1.default.model('User', UserSchema);
 exports.default = User;

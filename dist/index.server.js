@@ -20,21 +20,21 @@ const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const message_routes_1 = __importDefault(require("./routes/message.routes"));
 const getUsers_routes_1 = __importDefault(require("./routes/getUsers.routes"));
 const cors_1 = __importDefault(require("cors"));
-const app = (0, express_1.default)();
+const socket_1 = require("./socket/socket");
 dotenv_1.default.config();
-app.use(express_1.default.json());
-app.use((0, cookie_parser_1.default)());
+socket_1.app.use(express_1.default.json());
+socket_1.app.use((0, cookie_parser_1.default)());
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://social-messaging-application.netlify.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
+    origin: ['https://social-messaging-application.netlify.app'],
+    methods: ['GET', 'POST'],
+    // allowedHeaders: ['Content-Type'],
     credentials: true
 };
-app.use((0, cors_1.default)(corsOptions));
-app.use('/api/auth', auth_routes_1.default);
-app.use('/api/messages', message_routes_1.default);
-app.use('/api/users', getUsers_routes_1.default);
-app.listen(process.env.PORT || 8000, () => __awaiter(void 0, void 0, void 0, function* () {
+socket_1.app.use((0, cors_1.default)(corsOptions));
+socket_1.app.use('/api/auth', auth_routes_1.default);
+socket_1.app.use('/api/messages', message_routes_1.default);
+socket_1.app.use('/api/users', getUsers_routes_1.default);
+socket_1.server.listen(process.env.PORT || 8000, () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, db_database_1.dbConnect)();
         console.log(`Server is running on port ${process.env.PORT}`);

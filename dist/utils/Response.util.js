@@ -7,6 +7,6 @@ const ApiResponse = (res, statusCode, success, message, data, error) => {
         extract.data = data;
     if (error)
         extract.error = error;
-    return res.status(statusCode).json(extract);
+    return res.json(extract);
 };
 exports.ApiResponse = ApiResponse;

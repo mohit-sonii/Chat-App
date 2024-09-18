@@ -17,6 +17,7 @@ const Conversation_model_1 = __importDefault(require("../models/Conversation.mod
 const Response_util_1 = require("../utils/Response.util");
 const Message_model_1 = __importDefault(require("../models/Message.model"));
 const User_model_1 = __importDefault(require("../models/User.model"));
+const socket_1 = require("../socket/socket");
 const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const senderId = req.userData._id;
@@ -32,7 +33,7 @@ const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 participants: [senderId, receiverId],
                 messages: []
             });
-            yield User_model_1.default.updateMany({ _id: { $in: [senderId, receiverId] } }, { $set: { conversation_id: conversation._id } });
+            yield User_model_1.default.updateMany({ _id: { $in: [senderId, receiverId] } }, { $push: { conversation_id: conversation._id } });
         }
         const newMessage = yield Message_model_1.default.create({
             senderId,
@@ -43,10 +44,13 @@ const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             conversation.messages.push(newMessage._id);
         }
         yield Promise.all([conversation.save(), newMessage.save()]);
+        const receiverSocketId = (0, socket_1.getReceiverSocketId)(receiverId);
+        if (receiverSocketId) {
+            socket_1.io.to(receiverSocketId).emit("newMessage", newMessage);
+        }
         return (0, Response_util_1.ApiResponse)(res, 200, true, 'Message Sent Successfully', conversation);
     }
     catch (error) {
-        console.log(error, 'Error while sending message');
         return (0, Response_util_1.ApiResponse)(res, 500, false, error.message || 'Internal Server Error');
     }
 });
@@ -65,7 +69,6 @@ const getMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         return (0, Response_util_1.ApiResponse)(res, 200, true, 'Data fetched successfully', conversation.messages);
     }
     catch (error) {
-        console.log(error, 'Error while sending message');
         return (0, Response_util_1.ApiResponse)(res, error.message ? 400 : 500, false, error.message || 'Internal Server Error');
     }
 });

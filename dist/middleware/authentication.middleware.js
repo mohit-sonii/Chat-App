@@ -20,18 +20,18 @@ const Authentication = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
     try {
         const token = req.cookies.token;
         if (!token)
-            throw new Error('Please Login again');
+            throw new Error('Please Login !!!');
         const decode = jsonwebtoken_1.default.verify(token, process.env.Token_secret || '');
         if (!decode)
-            throw new Error('Please Login again');
+            throw new Error('Please Login !!!');
         const user = yield User_model_1.default.findById(decode.userId).select('-password');
         if (!user)
-            throw new Error('No User Exists');
+            throw new Error('No User Exists !!!');
         req.userData = user;
         next();
     }
     catch (error) {
-        console.log(error, 'Error while Authenticating User');
+        console.log(error.message, 'Error while Authenticating User');
         return (0, Response_util_1.ApiResponse)(res, 500, false, error.message || 'Internal Server Error');
     }
 });

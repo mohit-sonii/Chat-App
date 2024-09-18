@@ -19,5 +19,5 @@ export const ApiResponse = (
    const extract: response = { statusCode, success, message, data, error }
    if (data) extract.data = data
    if (error) extract.error = error
-   return res.status(statusCode).json(extract)
+   return res.json(extract)
 }
