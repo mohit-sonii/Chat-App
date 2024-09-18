@@ -9,7 +9,7 @@ export function useConversation() {
    const conversations = async () => {
       setloading(true)
       try {
-         const response = await axios.get('https://chat-app-4-d2tf.onrender.com/api/users', { withCredentials: true })
+         const response = await axios.get('/api/users', { withCredentials: true })
          return response.data
       } catch (error: any) {
          newToast(error.response.data.message)

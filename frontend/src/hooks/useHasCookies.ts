@@ -8,7 +8,7 @@ export function hasCookies() {
 
    const cookies = async () => {
       try {
-         const response = await axios.get('https://chat-app-4-d2tf.onrender.com/api/auth', { withCredentials: true })
+         const response = await axios.get('/api/auth', { withCredentials: true })
          if (response.data.success) {
             dispatch(currentUser(response.data.data))
             dispatch(login(response.data.data))
