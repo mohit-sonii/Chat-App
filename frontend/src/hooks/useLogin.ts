@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux"
 import { LoginType } from "@/utils/interface"
 
 function useLogin() {
-   
+
    const [loading, setLoading] = useState<boolean>(false)
    const navigate = useNavigate()
    const { newToast } = useToast()
@@ -16,7 +16,7 @@ function useLogin() {
    const Login = async (data: LoginType) => {
       setLoading(true)
       try {
-         const response = await axios.post('/api/auth/login', data, {
+         const response = await axios.post('https://chat-app-4-d2tf.onrender.com/api/auth/login', data, {
             withCredentials: true
          })
          dispatch(login(response.data.data))
