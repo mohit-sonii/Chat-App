@@ -32,7 +32,7 @@ export const SocketContextProvider = ({ children }: ChildrenProps) => {
    useEffect(() => {
 
       if (currentUser && currentUser._id) {
-         const socket = io('http://localhost:8000', {
+         const socket = io('https://chat-app-4-d2tf.onrender.com', {
             withCredentials: true,
             query: {
                userId: currentUser._id
