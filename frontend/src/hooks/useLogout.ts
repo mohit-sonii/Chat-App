@@ -14,7 +14,7 @@ export function useLogout() {
    const Logout = async () => {
       setLoading(true)
       try {
-         const response = await axios.post('/api/auth/logout', null, {
+         const response = await axios.post('https://chat-app-4-d2tf.onrender.com/api/auth/logout', null, {
             withCredentials: true
          })
          if (!response.data) throw new Error('Problem while fetching the details')
