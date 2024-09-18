@@ -10,7 +10,9 @@ export default function useSearch() {
       setLoading(true)
       try {
          const response = await axios.get(`https://chat-app-4-d2tf.onrender.com/api/users/search?username=${username}`)
+
          console.log(response,'this i sthe rpoesne that shows when we send a search request')
+         
          return response.data
       } catch (error: any) {
          newToast(error.response.data.message)

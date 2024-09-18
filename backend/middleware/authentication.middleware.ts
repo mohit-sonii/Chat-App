@@ -7,6 +7,7 @@ import { JwtPayload } from "../utils/interfaces.util";
 
 export const Authentication = async (req: Request, res: Response, next: NextFunction) => {
    try {
+      console.log('checked fo authentication middleware')
       const token = req.cookies.token
       console.log(token,'this is token')
       if (!token) throw new Error('Please Login !!!')
