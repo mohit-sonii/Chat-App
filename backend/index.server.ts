@@ -1,4 +1,3 @@
-import { dbConnect } from './database/db.database'
 import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
@@ -6,6 +5,8 @@ import authRoute from './routes/auth.routes'
 import messageRoute from './routes/message.routes'
 import userRoute from './routes/getUsers.routes'
 import cors from 'cors'
+
+import { dbConnect } from './database/db.database'
 import { app, server } from './socket/socket'
 
 dotenv.config()
