@@ -38,7 +38,7 @@ export const Conversation = () => {
             <DotLoader bg='bg-black' />
             :
             Array.isArray(data) ? (
-               data.map((item: conversationData) => (
+               data?.map((item: conversationData) => (
                   <Card  item={item} />
                ))
             ) : (

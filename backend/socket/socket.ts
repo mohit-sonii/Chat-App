@@ -28,7 +28,7 @@ const userSocketMap: socketData = {}
 io.on('connection', (socket) => {
    // console.log('a user connected', socket.id) 
    const userId = socket.handshake.query.userId as string | undefined
-   console.log(userId,'this is user id after connection') 
+   // console.log(userId,'this is user id after connection') 
 
    // we will store the current user Id acrross all the accounts
    if (userId && userId != 'undefined') userSocketMap[userId] = socket.id

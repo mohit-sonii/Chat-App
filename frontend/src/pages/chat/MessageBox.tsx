@@ -59,7 +59,7 @@ function MessageBox() {
                <div className="w-full p-4 flex-1 overflow-y-auto ">
                   {loading ? (
                      <DotLoader bg="bg-black" />
-                  ) : messageData.length !== 0 ? (
+                  ) : messageData && messageData.length !== 0  ? (
                      <Message message={messageData} />
                   ) : (
                      ""

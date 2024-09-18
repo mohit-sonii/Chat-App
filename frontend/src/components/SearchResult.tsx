@@ -3,10 +3,10 @@ import { SearchResultObjectProps } from "@/utils/interface"
 
 function SearchResult({ call }: { call: SearchResultObjectProps }) {
    return (
-      !call.success ? (
-         <h1>{call.message}</h1>
-      ) : (
+      call.success ? (
          <Card item={call.data} />
+      ) : (
+         <h1>{call.message} I wonder why Please lgin is coming</h1>
       )
    )
 }
