@@ -39,7 +39,7 @@ export const Conversation = () => {
             :
             Array.isArray(data) ? (
                data.map((item: conversationData) => (
-                  <Card key={item._id} item={item} />
+                  <Card  item={item} />
                ))
             ) : (
          <p>No conversations found</p>

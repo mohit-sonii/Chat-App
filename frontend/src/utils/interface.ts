@@ -55,3 +55,11 @@ export interface messageTypes {
    __v: number,
    _id: string
 }
+
+export interface RefineDataForZod {
+   username: string,
+   fullname: string,
+   gender: string,
+   password: string,
+   confirmPassword: string,
+}

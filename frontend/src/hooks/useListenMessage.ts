@@ -10,7 +10,7 @@ export const useListenMessage = () => {
    const messages = useSelector((state: any) => state.message.message)
    
    useEffect(() => {
-      socket?.on("newMessage", (newMessage) => {
+      socket?.on("newMessage", (newMessage:string) => {
          dispatch(currentMessages([...messages, newMessage]))
       })
 

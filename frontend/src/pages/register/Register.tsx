@@ -59,7 +59,7 @@ export default function Register() {
 
             <div className="flex flex-col gap-1 w-full">
                <label htmlFor="gender" className="text-black font-medium text-sm">Gender</label>
-               <select name="gender" value={form.gender} className="p-2 outline-none bg-transparent rounded-md border-gray-500 border-2 text-sm text-slate-800 w-full" onChange={(e) => { setForm({ ...form, ['gender']: e.target.value }) }}>
+               <select name="gender" value={form.gender} className="p-2 outline-none bg-transparent rounded-md border-gray-500 border-2 text-sm text-slate-800 w-full" onChange={(e:ChangeEvent<HTMLSelectElement>) => { setForm({ ...form, ['gender']: e.target.value }) }}>
                   <option value="">Select an option</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>

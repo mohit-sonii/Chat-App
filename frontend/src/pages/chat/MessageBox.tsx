@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { DotLoader } from "@/components/ui/dotLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { IoSend } from "react-icons/io5";
@@ -9,13 +9,18 @@ import { useToast } from "@/hooks/useToast";
 
 function MessageBox() {
 
-   const current = useSelector((state: any) => state.message?.chat);
    const [message, setMessage] = useState<string>("");
-   const { getMessages, loading, sendMessages } = useMessages();
    const [messageData, setMessageData] = useState([]);
-   const currentChatMessages = useSelector((state: any) => state.message.message)
+   
+   const { getMessages, loading, sendMessages } = useMessages();
+   
    const dispatch = useDispatch()
+   
+   const currentChatMessages = useSelector((state: any) => state.message.message)
+   const current = useSelector((state: any) => state.message?.chat);
+   
    const { newToast } = useToast()
+  
    const handleClick = async () => {
       if (message.length !== 0) {
          await sendMessages(message, current);
@@ -66,7 +71,7 @@ function MessageBox() {
                      type="text"
                      name="message"
                      value={message}
-                     onChange={(e) => setMessage(e.target.value)}
+                     onChange={(e:ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
                      className={`p-2 outline-none w-[80%] bg-transparent rounded-md border-gray-500 border-2 text-sm text-slate-800`}
                      placeholder="Type a message"
                   />

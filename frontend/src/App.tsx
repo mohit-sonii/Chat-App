@@ -4,16 +4,19 @@ import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import Chat from './pages/chat/Chat'
 import { useEffect, useState } from 'react'
+import { DotLoader } from './components/ui/dotLoader'
 import { hasCookies } from './hooks/useHasCookies'
 
 function App() {
 
    const { cookies } = hasCookies()
-   const [_, setAuth] = useState(false)
+   const [loading, setLoading] = useState<boolean>(false)
+   const [_, setAuth] = useState<boolean>(false)
 
    const navigate = useNavigate()
 
    const initialFunction = async () => {
+      setLoading(true)
       const hasCookie = await cookies()
       if (hasCookie) {
          setAuth(true)
@@ -33,6 +36,7 @@ function App() {
    return (
       <>
          <div className="flex justify-center items-center m-auto h-full">
+            {loading ? <DotLoader bg="black" /> : ''}
             <Routes>
                <Route path="/auth/login" element={<Login />} />
                <Route path="/auth/register" element={<Register />} />

@@ -1,6 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { conversationData } from '@/utils/interface'
 
-const initialState = {
+interface InitialValues {
+   authenticated: boolean
+   userData: conversationData | null
+}
+
+const initialState: InitialValues = {
    authenticated: false,
    userData: null
 }
@@ -9,7 +15,7 @@ const authSlice = createSlice({
    name: 'auth',
    initialState,
    reducers: {
-      login: (state, action) => {
+      login: (state, action: PayloadAction<conversationData | null>) => {
          state.authenticated = true
          state.userData = action.payload
       },
@@ -17,7 +23,7 @@ const authSlice = createSlice({
          state.authenticated = false
          state.userData = null
       },
-      currentUser: (state, action) => {
+      currentUser: (state, action: PayloadAction<conversationData | null>) => {
          if (action.payload) {
             state.authenticated = true
             state.userData = action.payload

@@ -9,7 +9,7 @@ export function useConversation() {
    const conversations = async () => {
       setloading(true)
       try {
-         const response = await axios.get('/api/users/')
+         const response = await axios.get('/api/users', { withCredentials: true })
          return response.data
       } catch (error: any) {
          newToast(error.response.data.message)
