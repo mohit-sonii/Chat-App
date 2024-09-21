@@ -22,13 +22,13 @@ const corsOptions = {
 };
 
 
-app.get('/socket.io/*', (_req: Request, _res: Response, next: NextFunction) => {
-   next();
-});
+// app.get('/socket.io/*', (_req: Request, _res: Response, next: NextFunction) => {
+//    next();
+// });
 
 app.use(cors({
    origin: 'https://social-messaging-application.netlify.app/',
-   methods: ['GET', 'POST'],
+   methods: ['GET', 'POST','DELETE','PATCH'],
    allowedHeaders: ['Content-Type', 'Authorization'],
    credentials: true
 }))
