@@ -1,7 +1,6 @@
 import express from 'express'
 import { Server } from 'socket.io'
 import http from 'http'
-import cors from 'cors'
 
 const app = express()
 const server = http.createServer(app)
@@ -10,12 +9,7 @@ interface socketData {
    [key: string]: string
 }
 
-app.use(cors({
-   origin: 'https://social-messaging-application.netlify.app',
-   methods: ['GET', 'POST', 'DELETE', 'PATCH'],
-   allowedHeaders: ['Content-Type', 'Authorization'],
-   credentials: true
-}))
+
 
 // Socket.io server with CORS
 const io = new Server(server, {
