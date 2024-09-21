@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 const corsOptions = {
-   origin: 'https://social-messaging-application.netlify.app',
+   origin: 'https://social-messaging-application.netlify.app/',
    methods: ['GET', 'POST'],
    allowedHeaders: ['Content-Type', 'Authorization'],
    credentials: true
@@ -26,7 +26,12 @@ app.get('/socket.io/*', (_req: Request, _res: Response, next: NextFunction) => {
    next();
 });
 
-app.use(cors(corsOptions))
+app.use(cors({
+   origin: 'https://social-messaging-application.netlify.app/',
+   methods: ['GET', 'POST'],
+   allowedHeaders: ['Content-Type', 'Authorization'],
+   credentials: true
+}))
 app.use('/api/auth', authRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/users', userRoute)
