@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useToast } from "./useToast";
-// import { backend } from "@/utils/url";
+
+const baseURL = import.meta.env.BASE_URL
 
 export default function useSearch() {
    const [loading, setLoading] = useState<boolean>(false)
@@ -10,7 +11,7 @@ export default function useSearch() {
    const search = async (username: string) => {
       setLoading(true)
       try {
-         const response = await axios.get(`/api/users/search?username=${username}`)
+         const response = await axios.get(`${baseURL}/api/users/search?username=${username}`)
 
          
          return response.data

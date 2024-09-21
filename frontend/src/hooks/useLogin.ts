@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom"
 import { currentUser, login } from "@/redux/auth"
 import { useDispatch } from "react-redux"
 import { LoginType } from "@/utils/interface"
-// import { backend } from "@/utils/url"
+
+
+const baseURL = import.meta.env.BASE_URL
 
 function useLogin() {
 
@@ -17,7 +19,7 @@ function useLogin() {
    const Login = async (data: LoginType) => {
       setLoading(true)
       try {
-         const response = await axios.post(`/api/auth/login`, data, {
+         const response = await axios.post(`${baseURL}/api/auth/login`, data, {
             withCredentials: true
          })
          if (response.data.success) {
