@@ -11,7 +11,8 @@ const io = new Server(server, {
       credentials: true,
       // allowedHeaders: ['Content-Type'],
       // 'http://localhost:5173',
-   }
+   },
+   transports: ['websocket'] 
 })
 
 interface socketData {

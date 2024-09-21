@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction,Request,Response } from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import authRoute from './routes/auth.routes'
@@ -20,6 +20,11 @@ const corsOptions = {
    allowedHeaders: ['Content-Type', 'Authorization'],
    credentials: true
 };
+
+
+app.get('/socket.io/*', (_req:Request, _res:Response, next:NextFunction) => {
+   next();
+});
 
 app.use(cors(corsOptions))
 app.use('/api/auth', authRoute)
