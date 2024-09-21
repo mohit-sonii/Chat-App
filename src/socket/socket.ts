@@ -1,24 +1,33 @@
 import express from 'express'
 import { Server } from 'socket.io'
 import http from 'http'
+import cors from 'cors'
 
 const app = express()
 const server = http.createServer(app)
-const io = new Server(server, {
-   cors: {
-      origin: 'https://social-messaging-application.netlify.app/',
-      // origin: '*',
-      methods: ['GET', 'POST','DELETE','PATCH'],
-      credentials: true,
-      allowedHeaders: ['Content-Type','Authorization'],
-      // 'http://localhost:5173',
-   },
-   transports: ['websocket','polling']
-})
 
 interface socketData {
    [key: string]: string
 }
+
+app.use(cors({
+   origin: 'https://social-messaging-application.netlify.app',
+   methods: ['GET', 'POST', 'DELETE', 'PATCH'],
+   allowedHeaders: ['Content-Type', 'Authorization'],
+   credentials: true
+}))
+
+// Socket.io server with CORS
+const io = new Server(server, {
+   cors: {
+      origin: 'https://social-messaging-application.netlify.app',  // No trailing slash
+      methods: ['GET', 'POST'],
+      credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization'],
+   },
+   transports: ['websocket', 'polling']
+})
+
 
 
 export const getReceiverSocketId = (receiverId: string) => {

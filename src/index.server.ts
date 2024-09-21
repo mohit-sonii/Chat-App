@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser'
 import authRoute from './routes/auth.routes'
 import messageRoute from './routes/message.routes'
 import userRoute from './routes/getUsers.routes'
-import cors from 'cors'
 
 import { dbConnect } from './database/db.database'
 import { app, server } from './socket/socket'
@@ -26,12 +25,6 @@ const corsOptions = {
 //    next();
 // });
 
-app.use(cors({
-   origin: 'https://social-messaging-application.netlify.app/',
-   methods: ['GET', 'POST','DELETE','PATCH'],
-   allowedHeaders: ['Content-Type', 'Authorization'],
-   credentials: true
-}))
 app.use('/api/auth', authRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/users', userRoute)
