@@ -7,5 +7,5 @@
       "dist"
    ],
    "ext": ".ts .js .json",
-   "exec": "ts-node ./backend/index.server.ts"
+   "exec": "ts-node ./src/index.server.ts"
 }

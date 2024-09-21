@@ -13,11 +13,11 @@
       "noImplicitAny": true,
       "strictNullChecks": true,
       "baseUrl": ".",
-      "rootDir": "./backend",
+      "rootDir": "src",
       "outDir": "./dist",
       "typeRoots": [
          "node_modules/@types",
-         "backend/@types"
+         "src/@types"
       ],
       "allowSyntheticDefaultImports": true,
       "resolveJsonModule": true,
@@ -29,7 +29,7 @@
       "strictPropertyInitialization": true,
       "paths": {
          "../*": [
-            "backend/*"
+            "src/*"
          ]
       },
    },
@@ -37,7 +37,7 @@
       "files": true
     },
     "include": [
-      "backend/**/*.ts",
+      "src/**/*.ts",
     ],
    "exclude": [
       "node_modules",
