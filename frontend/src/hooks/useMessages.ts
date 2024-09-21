@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useToast } from "./useToast"
+import { backend } from "@/utils/url"
 import axios, { AxiosError } from "axios"
 import { conversationData } from "@/utils/interface"
 // import { useDispatch, useSelector } from "react-redux"
@@ -26,7 +27,7 @@ export const useMessages = () => {
    const sendMessages = async (message: string, current: conversationData) => {
       setLoading(true)
       try {
-         const response = await axios.post(`/api/messages/send-message/${current._id}`, { message }, { withCredentials: true })
+         const response = await axios.post(`${backend}/api/messages/send-message/${current._id}`, { message }, { withCredentials: true })
          return response.data
       } catch (error: any) {
          if (error instanceof AxiosError) {

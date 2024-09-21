@@ -1,2 +1,2 @@
 
-export const backend:string = 'https://chat-app-dmbb.onrender.com'
+export const backend:string = 'https://chat-app-g6jw.onrender.com'

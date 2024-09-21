@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 import { RegisterType } from "@/utils/interface"
 
+import { backend } from "@/utils/url"
 
 export function useRegister() {
 
@@ -17,7 +18,7 @@ export function useRegister() {
    const register = async (data: RegisterType) => {
       setLoading(true)
       try {
-         const response = await axios.post('/api/auth/register', data, {
+         const response = await axios.post(`${backend}/api/auth/register`, data, {
             withCredentials: true
          })
          dispatch(login(response.data.data))
