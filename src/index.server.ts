@@ -17,7 +17,7 @@ app.use(cookieParser())
 const corsOptions = {
    origin: ['https://social-messaging-application.netlify.app'],
    methods: ['GET', 'POST'],
-   allowedHeaders: ['Content-Type'],
+   // allowedHeaders: ['Content-Type'],
    credentials: true
 };
 
