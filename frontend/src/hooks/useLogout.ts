@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import axios, { AxiosError } from "axios"
 
 
-const baseURL = import.meta.env.BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL
 
 export function useLogout() {
    const [loading, setLoading] = useState<boolean>(false)

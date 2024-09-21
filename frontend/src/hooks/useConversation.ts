@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToast } from "./useToast";
 import axios from "axios";
-const baseURL = import.meta.env.BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL
 
 export function useConversation() {
    const [loading, setloading] = useState<boolean>(false)

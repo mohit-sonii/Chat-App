@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import axios from "axios"
 import { currentUser, login } from "@/redux/auth"
 
-const baseUrl = import.meta.env.BASE_URL
+const baseUrl = import.meta.env.VITE_BASE_URL
 
 export function hasCookies() {
    const dispatch = useDispatch()

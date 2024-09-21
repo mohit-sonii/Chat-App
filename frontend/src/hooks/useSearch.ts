@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useToast } from "./useToast";
 
-const baseURL = import.meta.env.BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL
 
 export default function useSearch() {
    const [loading, setLoading] = useState<boolean>(false)

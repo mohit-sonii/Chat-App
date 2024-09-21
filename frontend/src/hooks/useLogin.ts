@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux"
 import { LoginType } from "@/utils/interface"
 
 
-const baseURL = import.meta.env.BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL
 
 function useLogin() {
 

@@ -5,7 +5,7 @@ import { conversationData } from "@/utils/interface"
 // import { useDispatch, useSelector } from "react-redux"
 // import { currentMessages } from "@/redux/message"
 
-const baseURL = import.meta.env.BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL
 
 
 export const useMessages = () => {

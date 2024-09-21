@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 import { RegisterType } from "@/utils/interface"
 
-const baseUrl = import.meta.env.BASE_URL
+const baseUrl = import.meta.env.VITE_BASE_URL
 export function useRegister() {
 
    const [loading, setLoading] = useState<boolean>(false)
