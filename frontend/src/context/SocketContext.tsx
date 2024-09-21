@@ -29,14 +29,12 @@ export const SocketContextProvider = ({ children }: ChildrenProps) => {
 
    const currentUser: conversationData = useSelector((state: any) => state.auth.userData)
 
-   // const serverApiUrl =
-   //    import.meta.env.MODE === "development"
-   //       ? "http://localhost:4000"
-   //       : "/";
+   const baseURL = import.meta.env.VITE_BASE_URL
+
    useEffect(() => {
 
       if (currentUser && currentUser._id) {
-         const socket = io('https://chat-app-dmbb.onrender.com', {
+         const socket = io(baseURL, {
             withCredentials: true,
             query: {
                userId: currentUser._id
