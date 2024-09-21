@@ -9,7 +9,7 @@ const io = new Server(server, {
       origin: 'https://social-messaging-application.netlify.app',
       methods: ['GET', 'POST'],
       credentials: true,
-      allowedHeaders: ['Content-Type'],
+      // allowedHeaders: ['Content-Type'],
       // 'http://localhost:5173',
    }
 })
