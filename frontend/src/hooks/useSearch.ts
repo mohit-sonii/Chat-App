@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useToast } from "./useToast";
-import { backend } from "@/utils/url";
+// import { backend } from "@/utils/url";
 
 export default function useSearch() {
    const [loading, setLoading] = useState<boolean>(false)
@@ -10,9 +10,8 @@ export default function useSearch() {
    const search = async (username: string) => {
       setLoading(true)
       try {
-         const response = await axios.get(`${backend}/api/users/search?username=${username}`)
+         const response = await axios.get(`/api/users/search?username=${username}`)
 
-         console.log(response,'this i sthe rpoesne that shows when we send a search request')
          
          return response.data
       } catch (error: any) {
