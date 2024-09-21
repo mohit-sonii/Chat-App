@@ -10,10 +10,10 @@ const io = new Server(server, {
       // origin: '*',
       methods: ['GET', 'POST','DELETE','PATCH'],
       credentials: true,
-      allowedHeaders: ['Content-Type'],
+      allowedHeaders: ['Content-Type','Authorization'],
       // 'http://localhost:5173',
    },
-   // transports: ['websocket']
+   transports: ['websocket','polling']
 })
 
 interface socketData {
